@@ -68,4 +68,30 @@ mysql> create table ticket(
     -> );
 Query OK, 0 rows affected, 1 warning (0.33 sec)
 
-mysql>
+mysql> create table stoppage(
+    -> train_no int not null,
+    -> station_code varchar(10) not null,
+    -> arrival_time time default null,
+    -> departure_time time default null,
+    -> primary key(train_no, station_code),
+    -> constraint `train_match1` foreign key (`train_no`) references `train`(`train_no`) on delete cascade on update cascade,
+    -> constraint `station_match1` foreign key (`station_code`) references `station`(`station_code`) on delete cascade on update cascade
+    -> );
+Query OK, 0 rows affected (0.45 sec)
+
+mysql> alter table passenger add constraint p1 foreign key(train_no) references train(train_no);
+Query OK, 0 rows affected (0.83 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table passenger add constraint p2 foreign key(ticket_no) references ticket(ticket_no);
+Query OK, 0 rows affected (0.57 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table ticket add column source varchar(10) AFTER train_no, add column dest varchar(10) AFTER source;
+Query OK, 0 rows affected (0.33 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table ticket add constraint t1 foreign key(source) references station(station_code), add constraint t2 foreign key(dest) references station(station_code);
+Query OK, 0 rows affected (0.35 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
