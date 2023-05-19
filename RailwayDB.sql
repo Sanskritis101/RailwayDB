@@ -122,6 +122,10 @@ mysql> alter table ticket add constraint t1 foreign key(source) references stati
 Query OK, 0 rows affected (0.35 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
+mysql> alter table passenger add Class varchar(20);
+Query OK, 0 rows affected (0.35 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
 mysql> delimiter //
 mysql> create trigger t_cancellation
     -> before delete on ticket for each row
