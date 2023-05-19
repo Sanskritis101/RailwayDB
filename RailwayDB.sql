@@ -83,6 +83,33 @@ mysql> create table train(
     -> );
 Query OK, 0 rows affected, 4 warnings (0.16 sec)
 
+mysql> insert into train values(20,"Duranto",200,100,120,120);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into train values(30,"Chennai Express",200,100,130,130);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into train values(40,"Shadabti express",200,150,130,130);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into train values(50,"Delhi express",200,150,150,130);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into train values(60,"Kolkata express",200,150,150,120);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select* from train;
++----------+------------------+--------------+---------------+---------------+---------------+
+| train_no | train_name       | Seat_Sleeper | Seat_AC_tier1 | Seat_AC_tier2 | Seat_AC_tier3 |
++----------+------------------+--------------+---------------+---------------+---------------+
+|       20 | Duranto          |          200 |           100 |           120 |           120 |
+|       30 | Chennai Express  |          200 |           100 |           130 |           130 |
+|       40 | Shadabti express |          200 |           150 |           130 |           130 |
+|       50 | Delhi express    |          200 |           150 |           150 |           130 |
+|       60 | Kolkata express  |          200 |           150 |           150 |           120 |
++----------+------------------+--------------+---------------+---------------+---------------+
+5 rows in set (0.00 sec)
+
 mysql> create table ticket(
     -> ticket_no int(10) primary key auto_increment,
     -> train_no int not null,
