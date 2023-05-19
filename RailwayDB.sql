@@ -30,6 +30,33 @@ mysql> create table user(
     -> );
 Query OK, 0 rows affected (0.52 sec)
 
+mysql> insert into user values(10020,"1234%%&","jayesh@gmail.com",9898221366,"Pune",32,"M");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into user values(10021,"3241%%&","Kiran@gmail.com",1525381696,"Delhi",39,"F");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into user values(10022,"8772@!","Om@gmail.com",7622351287,"Mumbai",29,"M");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into user values(10023,"9901$@","Lily@gmail.com",0999772187,"Pune",26,"F");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into user values(10024,"6725*%","Purabh@gmail.com",2539119365,"Banglore",46,"M");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select* from user;
++---------+----------+------------------+------------+----------+------+--------+
+| user_id | password | email_id         | phone_no   | address  | age  | gender |
++---------+----------+------------------+------------+----------+------+--------+
+|   10020 | 1234%%&  | jayesh@gmail.com | 9898221366 | Pune     |   32 | M      |
+|   10021 | 3241%%&  | Kiran@gmail.com  | 1525381696 | Delhi    |   39 | F      |
+|   10022 | 8772@!   | Om@gmail.com     | 7622351287 | Mumbai   |   29 | M      |
+|   10023 | 9901$@   | Lily@gmail.com   | 999772187  | Pune     |   26 | F      |
+|   10024 | 6725*%   | Purabh@gmail.com | 2539119365 | Banglore |   46 | M      |
++---------+----------+------------------+------------+----------+------+--------+
+5 rows in set (0.00 sec)
+
 mysql> create table passenger(
     -> passenger_id int primary key,
     -> name varchar(30) not null,
