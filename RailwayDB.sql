@@ -73,6 +73,37 @@ mysql> create table station(
     -> );
 Query OK, 0 rows affected (0.14 sec)
 
+mysql> insert into station values("ALB", "Pune station");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into station values("CKK", "Chennai station");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into station values("KYM", "Banglore station");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into station values("GZB", "Ghaziabad station");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into station values("NDLS", "NewDelhi station");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into station values("MS", "Mumbai station");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select* from station;
++--------------+-------------------+
+| station_code | station_name      |
++--------------+-------------------+
+| ALB          | Pune station      |
+| CKK          | Chennai station   |
+| GZB          | Ghaziabad station |
+| KYM          | Banglore station  |
+| MS           | Mumbai station    |
+| NDLS         | NewDelhi station  |
++--------------+-------------------+
+6 rows in set (0.00 sec)
+
 mysql> create table train(
     -> train_no int primary key,
     -> train_name varchar(50) unique,
