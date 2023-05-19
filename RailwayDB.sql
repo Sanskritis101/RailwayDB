@@ -95,3 +95,22 @@ mysql> alter table ticket add constraint t1 foreign key(source) references stati
 Query OK, 0 rows affected (0.35 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
+mysql> delimiter //
+mysql> create trigger t_cancellation
+    -> before delete on ticket for each row
+    -> begin
+    -> set @train_no= old.train_no;
+    -> set @ticket_no= old.ticket_no;
+    -> set @Class =(select p.class from passenger p where p.ticket_no= @ticket_no);
+    -> if @Class= Seat_AC_tier1 then update train set Seat_AC_tier1= Seat_AC_tier1+1 where train_no= @train_no;
+    -> elseif @Class= Seat_Sleeper then update train set Seat_Sleeper = Seat_Sleeper+1 where train_no= @train_no;
+    -> elseif @Class= Seat_AC_tier2 then update train set Seat_AC_tier2 = Seat_AC_tier2+1 where train_no= @train_no;
+    -> elseif @Class= Seat_AC_tier3 then update train set Seat_AC_tier3 = Seat_AC_tier3+1 where train_no= @train_no;
+    -> end if;
+    -> END //
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> delimiter ;
+
+mysql> create view a(station_code, train_no,arrival_time)as select stoppage.station_code, train_no,arrival_time from station inner join stoppage on station.station_code where station.station_name="Banglore";
+Query OK, 0 rows affected (0.01 sec)
