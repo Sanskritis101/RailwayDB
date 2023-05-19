@@ -164,6 +164,37 @@ mysql> create table stoppage(
     -> );
 Query OK, 0 rows affected (0.45 sec)
 
+mysql> alter table stoppage add check(extract(hour from arrival_time)<24 and extract(hour from departure_time)<24);
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into stoppage values(20,"ALB",'22:15:00','22:50:00');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into stoppage values(50,"NDLS",'10:05:00','10:35:00');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into stoppage values(30,"CKK",'09:15:00','09:55:00');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into stoppage values(40,"GZB",'14:45:00','15:15:00');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into stoppage values(60,"ALB",'16:05:00','16:45:00');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select* from stoppage;
++----------+--------------+--------------+----------------+
+| train_no | station_code | arrival_time | departure_time |
++----------+--------------+--------------+----------------+
+|       20 | ALB          | 22:15:00     | 22:50:00       |
+|       30 | CKK          | 09:15:00     | 09:55:00       |
+|       40 | GZB          | 14:45:00     | 15:15:00       |
+|       50 | NDLS         | 10:05:00     | 10:35:00       |
+|       60 | ALB          | 16:05:00     | 16:45:00       |
++----------+--------------+--------------+----------------+
+5 rows in set (0.00 sec)
+
 mysql> alter table passenger add constraint p1 foreign key(train_no) references train(train_no);
 Query OK, 0 rows affected (0.83 sec)
 Records: 0  Duplicates: 0  Warnings: 0
