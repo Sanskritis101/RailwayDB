@@ -153,6 +153,33 @@ mysql> create table ticket(
     -> );
 Query OK, 0 rows affected, 1 warning (0.33 sec)
 
+mysql> insert into ticket values(99010,30,"MS","CKK","23-06-21",10022);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into ticket values(99020,50,"NDLS","MS","23-07-11",10021);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into ticket values(99030,20,"ALB","NDLS","23-07-17",10020);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into ticket values(99040,40,"MS","GZB","23-08-27",10024);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into ticket values(99050,20,"ALB","KYM","23-08-09",10023);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select* from ticket;
++-----------+----------+--------+------+-----------------+---------+
+| ticket_no | train_no | source | dest | date_of_journey | user_id |
++-----------+----------+--------+------+-----------------+---------+
+|     99010 |       30 | MS     | CKK  | 2023-06-21      |   10022 |
+|     99020 |       50 | NDLS   | MS   | 2023-07-11      |   10021 |
+|     99030 |       20 | ALB    | NDLS | 2023-07-17      |   10020 |
+|     99040 |       40 | MS     | GZB  | 2023-08-27      |   10024 |
+|     99050 |       20 | ALB    | KYM  | 2023-08-09      |   10023 |
++-----------+----------+--------+------+-----------------+---------+
+5 rows in set (0.00 sec)
+
 mysql> create table stoppage(
     -> train_no int not null,
     -> station_code varchar(10) not null,
