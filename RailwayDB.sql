@@ -299,6 +299,7 @@ mysql> select* from passenger;
 +--------------+--------+------+--------+-----------+----------+---------------+
 4 rows in set (0.00 sec)
 
+/* Find the time at which last train  leaves New delhi station */
 mysql> create view f(departure_time) as select departure_time from stoppage where station_code in(select station_code from station where station_name="NewDelhi station");
 Query OK, 0 rows affected (0.02 sec)
 
@@ -310,4 +311,12 @@ mysql> select* from f;
 +----------------+
 1 row in set (0.00 sec)
 
+/* Find the number of seats in the selected class*/
+mysql> select sum(Seat_Sleeper) from train where train_no=20;
++-------------------+
+| sum(Seat_Sleeper) |
++-------------------+
+|               200 |
++-------------------+
+1 row in set (0.00 sec)
 
