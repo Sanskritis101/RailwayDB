@@ -282,9 +282,32 @@ mysql> create trigger t_cancellation
     -> elseif @Class= Seat_AC_tier3 then update train set Seat_AC_tier3 = Seat_AC_tier3+1 where train_no= @train_no;
     -> end if;
     -> END //
+    -> delimiter ;
 Query OK, 0 rows affected (0.03 sec)
 
-mysql> delimiter ;
+mysql> delete from passenger where ticket_no=99010;
+Query OK, 1 row affected (0.01 sec)
 
-mysql> create view a(station_code, train_no,arrival_time)as select stoppage.station_code, train_no,arrival_time from station inner join stoppage on station.station_code where station.station_name="Banglore";
-Query OK, 0 rows affected (0.01 sec)
+mysql> select* from passenger;
++--------------+--------+------+--------+-----------+----------+---------------+
+| passenger_id | name   | age  | gender | ticket_no | train_no | Class         |
++--------------+--------+------+--------+-----------+----------+---------------+
+|      9000700 | Jayesh |   32 | M      |     99030 |       20 | Seat_Sleeper  |
+|      9000705 | Purabh |   46 | M      |     99050 |       20 | Seat_AC_tier1 |
+|      9000715 | Lily   |   26 | F      |     99040 |       40 | Seat_AC_tier3 |
+|      9000720 | Kiran  |   39 | F      |     99020 |       50 | Seat_Sleeper  |
++--------------+--------+------+--------+-----------+----------+---------------+
+4 rows in set (0.00 sec)
+
+mysql> create view f(departure_time) as select departure_time from stoppage where station_code in(select station_code from station where station_name="NewDelhi station");
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select* from f;
++----------------+
+| departure_time |
++----------------+
+| 10:35:00       |
++----------------+
+1 row in set (0.00 sec)
+
+
