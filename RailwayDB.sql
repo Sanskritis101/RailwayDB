@@ -67,6 +67,33 @@ mysql> create table passenger(
     -> );
 Query OK, 0 rows affected (0.17 sec)
 
+mysql> insert into passenger values(9000700,"Jayesh",32,"M",99030,20,"Seat_Sleeper");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into passenger values(9000705,"Purabh",46,"M",99050,20,"Seat_AC_tier1");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into passenger values(9000715,"Lily",26,"F",99040,40,"Seat_AC_tier3");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into passenger values(9000720,"Kiran",39,"F",99020,50,"Seat_Sleeper");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into passenger values(9000735,"Om",29,"M",99010,30,"Seat_tier2");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select* from passenger;
++--------------+--------+------+--------+-----------+----------+---------------+
+| passenger_id | name   | age  | gender | ticket_no | train_no | Class         |
++--------------+--------+------+--------+-----------+----------+---------------+
+|      9000700 | Jayesh |   32 | M      |     99030 |       20 | Seat_Sleeper  |
+|      9000705 | Purabh |   46 | M      |     99050 |       20 | Seat_AC_tier1 |
+|      9000715 | Lily   |   26 | F      |     99040 |       40 | Seat_AC_tier3 |
+|      9000720 | Kiran  |   39 | F      |     99020 |       50 | Seat_Sleeper  |
+|      9000735 | Om     |   29 | M      |     99010 |       30 | Seat_tier2    |
++--------------+--------+------+--------+-----------+----------+---------------+
+5 rows in set (0.00 sec)
+
 mysql> create table station(
     -> station_code varchar(10) primary key,
     -> station_name varchar(50)
