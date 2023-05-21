@@ -14,8 +14,6 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql> create database railway_system;
 Query OK, 1 row affected (0.29 sec)
 
-mysql> use railway system;
-ERROR 1049 (42000): Unknown database 'railway'
 mysql> use railway_system;
 Database changed
 
