@@ -82,6 +82,10 @@ Query OK, 1 row affected (0.01 sec)
 mysql> insert into passenger values(9000735,"Om",29,"M",99010,30,"Seat_tier2");
 Query OK, 1 row affected (0.01 sec)
 
+mysql> alter table passenger add Class varchar(20);
+Query OK, 0 rows affected (0.35 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
 mysql> select* from passenger;
 +--------------+--------+------+--------+-----------+----------+---------------+
 | passenger_id | name   | age  | gender | ticket_no | train_no | Class         |
@@ -180,6 +184,14 @@ mysql> create table ticket(
     -> );
 Query OK, 0 rows affected, 1 warning (0.33 sec)
 
+mysql> alter table ticket add column source varchar(10) AFTER train_no, add column dest varchar(10) AFTER source;
+Query OK, 0 rows affected (0.33 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table ticket add constraint t1 foreign key(source) references station(station_code), add constraint t2 foreign key(dest) references station(station_code);
+Query OK, 0 rows affected (0.35 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
 mysql> insert into ticket values(99010,30,"MS","CKK","23-06-21",10022);
 Query OK, 1 row affected (0.04 sec)
 
@@ -255,18 +267,6 @@ Records: 0  Duplicates: 0  Warnings: 0
 
 mysql> alter table passenger add constraint p2 foreign key(ticket_no) references ticket(ticket_no);
 Query OK, 0 rows affected (0.57 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
-mysql> alter table ticket add column source varchar(10) AFTER train_no, add column dest varchar(10) AFTER source;
-Query OK, 0 rows affected (0.33 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
-mysql> alter table ticket add constraint t1 foreign key(source) references station(station_code), add constraint t2 foreign key(dest) references station(station_code);
-Query OK, 0 rows affected (0.35 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
-mysql> alter table passenger add Class varchar(20);
-Query OK, 0 rows affected (0.35 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
 mysql> delimiter //
