@@ -318,3 +318,22 @@ mysql> select sum(Seat_Sleeper) from train where train_no=20;
 +-------------------+
 1 row in set (0.00 sec)
 
+mysql> delimiter //
+mysql> create procedure Passengers_train_details()
+    -> begin
+    -> select ticket_no, train_no, Class from passenger;
+    -> end
+    -> //
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> delimiter ;
+mysql> call Passengers_train_details();
++-----------+----------+---------------+
+| ticket_no | train_no | Class         |
++-----------+----------+---------------+
+|     99030 |       20 | Seat_Sleeper  |
+|     99050 |       20 | Seat_AC_tier1 |
+|     99040 |       40 | Seat_AC_tier3 |
+|     99020 |       50 | Seat_Sleeper  |
++-----------+----------+---------------+
+4 rows in set (0.02 sec)
